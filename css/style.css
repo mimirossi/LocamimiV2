@@ -67,6 +67,8 @@ a { color: inherit; }
   text-transform: uppercase;
 }
 .body { margin: var(--spacing-stack-md) 0 var(--spacing-stack-lg); max-width: 44ch; }
+/* il line-height del display lascia ~0.31em vuoto sotto le maiuscole: lo tolgo così titolo→paragrafo = 16px visivi */
+.giovedi__text .display, .contatti__text .display { margin-bottom: -0.31em; }
 
 /* ——— bottoni ——— */
 .btn {
@@ -85,11 +87,11 @@ a { color: inherit; }
 .btn:focus-visible { outline: 2px solid var(--btn-focus, var(--border-primary-focus)); outline-offset: 2px; }
 /* varianti del DS: Primary, Accent, Neutral, Secondary, Danger, Link */
 .btn--primary   { --btn-bg: var(--surface-primary-default); --btn-bg-hover: var(--surface-primary-default-hover); --btn-fg: var(--text-primary-default-on-colour); --btn-focus: var(--border-primary-focus); }
-.btn--accent    { --btn-bg: var(--surface-accent-default-subtle); --btn-bg-hover: var(--surface-accent-default-subtle-hover); --btn-fg: var(--text-accent-default); --btn-focus: var(--border-accent-focus); }
+.btn--accent    { --btn-bg: var(--surface-accent-default-subtle-hover); --btn-bg-hover: var(--surface-accent-default-subtle); --btn-fg: var(--text-accent-default); --btn-focus: var(--border-accent-focus); }
 .btn--neutral   { --btn-bg: var(--surface-page); --btn-bg-hover: var(--surface-page-secondary); --btn-fg: var(--text-default-body); --btn-focus: var(--border-default-default); }
 .btn--secondary { --btn-bg: var(--surface-secondary-default); --btn-bg-hover: var(--surface-secondary-default-hover); --btn-fg: var(--text-secondary-default-on-colour); --btn-focus: var(--border-secondary-focus); }
 .btn--danger    { --btn-bg: var(--surface-error-default); --btn-bg-hover: var(--surface-error-default-hover); --btn-fg: var(--text-error-default-on-colour); }
-.btn--outlined { --btn-bg: transparent; --btn-bg-hover: var(--surface-primary-default-subtle); --btn-fg: var(--text-primary-default); --btn-fg-hover: #63054f; --btn-focus: var(--border-primary-focus); box-shadow: inset 0 0 0 1px var(--border-primary-default); }
+.btn--outlined { --btn-bg: var(--surface-page); --btn-bg-hover: var(--surface-primary-default-subtle); --btn-fg: var(--text-primary-default); --btn-fg-hover: #63054f; --btn-focus: var(--border-primary-focus); box-shadow: inset 0 0 0 1px var(--border-primary-default); }
 .btn--outlined:focus-visible { box-shadow: inset 0 0 0 1px var(--border-primary-focus); }
 .btn--link      { --btn-bg: transparent; --btn-bg-hover: var(--surface-primary-default-subtle); --btn-fg: var(--text-primary-default); text-decoration: underline; }
 .btn--icon      { width: 44px; padding: 0; font-size: 18px; line-height: 1; }

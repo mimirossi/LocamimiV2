@@ -173,14 +173,14 @@
 
   track.innerHTML = SETS.map((s) => `
     <article class="scheda" aria-label="${s.title}">
-      <div class="scheda__img scheda__img--${s.label}">
-        <div class="disc disc--static disc--${s.label}" aria-hidden="true">${discHTML(s)}</div>
+      <div class="scheda__img scheda__img--${s.bg}">
+        <img class="scheda__art" src="${s.art}" alt="" draggable="false">
       </div>
       <div class="scheda__body">
-        <p class="tag">${s.tag}</p>
+        <p class="tag">${s.subtitle}</p>
         <h3 class="scheda__title">${s.title}</h3>
-        <p class="scheda__text">${s.text}</p>
-        <a class="btn btn--primary" href="${s.soundcloud || LINKS.soundcloud}" target="_blank" rel="noopener">Scopri il set su SoundCloud<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+        <p class="scheda__text">${s.description}</p>
+        <a class="btn btn--primary" href="${s.soundcloud || LINKS.soundcloud}" target="_blank" rel="noopener">${s.cta || 'Ascolta'}<span class="sr-only"> ${s.title} su SoundCloud (si apre in una nuova scheda)</span></a>
       </div>
     </article>`).join('');
   const cards = [...track.children];
@@ -222,6 +222,33 @@
   track.addEventListener('wheel', (e) => {
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { track.scrollLeft += e.deltaY; e.preventDefault(); }
   }, { passive: false });
+
+  /* ——— foto Unsplash (come nel v1): se arrivano entro 2,5 s sostituiscono le illustrazioni ——— */
+  const CONFIG = window.LOCAMIMI_CONFIG || {};
+  const utm = (u) => u + (u.includes('?') ? '&' : '?') + 'utm_source=locamimi&utm_medium=referral';
+  if (CONFIG.unsplashAccessKey) {
+    const ctl = new AbortController();
+    const to = setTimeout(() => ctl.abort(), 2500);
+    fetch(`https://api.unsplash.com/photos/random?count=${N}&orientation=landscape&content_filter=high&query=${encodeURIComponent(CONFIG.unsplashQuery || 'pink')}`,
+      { signal: ctl.signal, headers: { 'Accept-Version': 'v1', Authorization: `Client-ID ${CONFIG.unsplashAccessKey}` } })
+      .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then((photos) => {
+        if (!Array.isArray(photos) || !photos.length) return;
+        cards.forEach((c, i) => {
+          const p = photos[i % photos.length];
+          const box = c.querySelector('.scheda__img');
+          box.classList.add('has-photo');
+          box.innerHTML = `<img class="scheda__photo" src="${p.urls.raw}&w=960&h=720&fit=crop&auto=format&q=75" alt="${(p.alt_description || '').replace(/"/g, '&quot;')}" loading="lazy" draggable="false">`;
+        });
+        const el = $('[data-credits]');
+        const seen = new Set(), names = [];
+        photos.forEach((p) => { if (!seen.has(p.user.username)) { seen.add(p.user.username); names.push(`<a href="${utm(p.user.links.html)}" target="_blank" rel="noopener">${p.user.name}</a>`); } });
+        el.innerHTML = `Foto di ${names.join(', ')} su <a href="${utm('https://unsplash.com/')}" target="_blank" rel="noopener">Unsplash</a>`;
+        el.hidden = false;
+      })
+      .catch(() => {})
+      .finally(() => clearTimeout(to));
+  }
 
   /* ——— link, reveal, anno ——— */
   document.querySelectorAll('[data-ig]').forEach((a) => { a.href = LINKS.instagram || '#'; });

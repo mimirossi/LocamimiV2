@@ -173,7 +173,7 @@ a { color: inherit; }
   position: absolute; z-index: 6; left: 0; right: 0; bottom: 56px;
   display: flex; align-items: center; justify-content: center; gap: var(--spacing-stack-lg);
 }
-.hero__now { margin: 0; min-width: 14ch; text-align: center; font-weight: var(--font-weight-semibold); }
+.hero__now { margin: 0; width: min(26ch, 46vw); text-align: center; line-height: 20px; font-weight: var(--font-weight-semibold); }
 .ctl {
   width: 44px; height: 44px; border-radius: 50%;
   border: 0; background: var(--surface-page); box-shadow: var(--shadow-lg);
@@ -255,8 +255,10 @@ a { color: inherit; }
 }
 .scheda__img { position: relative; aspect-ratio: 4 / 3; display: grid; place-items: center; overflow: hidden; background: var(--surface-page-secondary); }
 .scheda__img--lime { background: var(--surface-accent-default); }
-.scheda__img--pink, .scheda__img--marble { background: var(--surface-primary-default); }
-.scheda__img .disc { position: relative; left: auto; top: auto; --d: 78%; width: var(--d); height: auto; aspect-ratio: 1; transform: translateY(18%); box-shadow: none; }
+.scheda__img--pink { background: var(--surface-primary-default); }
+.scheda__img--grey { background: var(--surface-page-secondary); }
+.scheda__art { width: 58%; height: auto; max-height: 86%; object-fit: contain; }
+.scheda__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .scheda__body { padding: var(--spacing-stack-lg); display: flex; flex-direction: column; gap: var(--spacing-stack-sm); }
 .scheda__title { margin: 0; font-family: var(--font-family-display); font-weight: 400; font-size: var(--font-heading-h4-font-size); line-height: var(--font-heading-h4-line-height); text-transform: uppercase; }
 .scheda__text { margin: 0 0 var(--spacing-stack-sm); color: var(--text-default-caption); }
@@ -302,3 +304,7 @@ a { color: inherit; }
 .info div { display: flex; gap: var(--spacing-stack-md); }
 .info dt { min-width: 56px; font-size: var(--font-ui-tag-font-size); line-height: var(--font-caption-line-height); letter-spacing: var(--font-ui-tag-letter-spacing); text-transform: uppercase; font-weight: var(--font-weight-semibold); }
 .info dd { margin: 0; }
+
+.credits { max-width: 60ch; margin: var(--spacing-stack-lg) auto 0; text-align: center; font-size: var(--font-caption-font-size); line-height: var(--font-caption-line-height); }
+.credits a { color: inherit; }
+.credits + .foot { margin-top: var(--spacing-stack-md); }

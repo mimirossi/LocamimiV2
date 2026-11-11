@@ -180,7 +180,7 @@
         <p class="tag">${s.tag}</p>
         <h3 class="scheda__title">${s.title}</h3>
         <p class="scheda__text">${s.text}</p>
-        <a class="btn btn--dark" href="${s.soundcloud || LINKS.soundcloudDefault}" target="_blank" rel="noopener">Scopri il set su SoundCloud<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+        <a class="btn btn--primary" href="${s.soundcloud || LINKS.soundcloud}" target="_blank" rel="noopener">Scopri il set su SoundCloud<span class="sr-only"> (si apre in una nuova scheda)</span></a>
       </div>
     </article>`).join('');
   const cards = [...track.children];
@@ -224,12 +224,9 @@
   }, { passive: false });
 
   /* ——— link, reveal, anno ——— */
-  const juicy = SETS.find((s) => s.id === 'juicy');
-  const scLink = $('[data-sc="juicy"]');
-  if (scLink) scLink.href = (juicy && juicy.soundcloud) || LINKS.soundcloudDefault || '#';
-  const ig = $('[data-ig]');
-  if (ig) ig.href = LINKS.instagram || '#';
-  $('[data-year]').textContent = new Date().getFullYear();
+  document.querySelectorAll('[data-ig]').forEach((a) => { a.href = LINKS.instagram || '#'; });
+  const mp = $('[data-maps]'); if (mp) mp.href = LINKS.maps || '#';
+  const em = $('[data-email]'); if (em) em.href = LINKS.email || '#';
 
   const io = new IntersectionObserver((entries) => entries.forEach((en) => {
     if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }

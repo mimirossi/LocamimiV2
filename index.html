@@ -29,11 +29,7 @@
     <a class="nav__brand" href="#top" aria-label="locamimi, torna in alto">
       <img src="assets/svg/wordmark.svg" width="150" height="43" alt="LOCAMIMI">
     </a>
-    <nav class="nav__links" aria-label="Principale">
-      <a href="#set">Set</a>
-      <a href="#giovedi">Giovedì</a>
-      <a href="#contatti">Contatti</a>
-    </nav>
+    <a class="btn btn--page nav__cta" href="#contatti">Booking</a>
   </header>
 
   <main>
@@ -41,9 +37,9 @@
     <section class="hero" id="set" data-hero aria-labelledby="hero-title">
       <div class="hero__stage" data-stage>
         <div class="hero__copy" data-hero-copy>
-          <p class="tag">DJ · house / hardgroove</p>
+          <p class="tag">DJ · House, bounce e latin vibes · Milano · Bari</p>
           <h1 class="display" id="hero-title">Locamimi</h1>
-          <p class="hero__lead">Latin vibes sopra ogni cassa dritta. Scorri i dischi, scegli un set.</p>
+          <p class="hero__lead">House music is a soul thing</p>
         </div>
 
         <div class="zoomer" data-zoomer>
@@ -56,7 +52,7 @@
           <button class="ctl" type="button" data-next aria-label="Set successivo">→</button>
         </div>
 
-        <p class="hero__hint" data-hint>Trascina · clicca un disco · poi scorri giù</p>
+        <p class="hero__hint" data-hint>Trascina in orizzontale. Tocca un disco per scoprire il set.</p>
         <div class="hero__wash" data-wash aria-hidden="true"></div>
       </div>
     </section>
@@ -71,8 +67,12 @@
         <div class="giovedi__text" data-reveal>
           <p class="tag">Ogni giovedì</p>
           <h2 class="display" id="giovedi-title">Juicy<br>Thursday</h2>
-          <p class="body">I miei dj set del giovedì: house, hardgroove e una spruzzata di latin per arrivare al weekend con qualche ora d’anticipo.</p>
-          <a class="btn btn--dark" href="#" data-sc="juicy" target="_blank" rel="noopener">Ascolta su SoundCloud</a>
+          <p class="body">Birrette, house e un poquito di latina vibes: come sempre an happy juicy thursday, vi aspetto!</p>
+          <dl class="info">
+            <div><dt>Dove</dt><dd><a data-maps href="#" target="_blank" rel="noopener">Hey Luigi · Via G. Washington 107, Milano</a></dd></div>
+            <div><dt>Orario</dt><dd>19:00 – 22:00</dd></div>
+          </dl>
+          <a class="btn btn--page" href="#" data-ig target="_blank" rel="noopener">Parliamone su Instagram</a>
         </div>
 
         <div class="giovedi__art" data-reveal aria-hidden="true">
@@ -92,17 +92,18 @@
     <section class="contatti" id="contatti" aria-labelledby="contatti-title">
       <div class="contatti__inner">
         <div class="contatti__text" data-reveal>
-          <p class="tag">Scrivimi</p>
+          <p class="tag">Booking / collaborazioni / due chiacchiere</p>
           <h2 class="display" id="contatti-title">Contatti</h2>
-          <p class="body">Date, serate, collaborazioni o solo un saluto: il modo più veloce è un messaggio su Instagram.</p>
+          <p class="body">Ci vediamo alla tua serata? Scrivimi dove preferisci.</p>
           <div class="contatti__cta">
-            <a class="btn btn--dark" href="#" data-ig target="_blank" rel="noopener">Scrivimi su Instagram</a>
-            <a class="btn btn--ghost" href="#set">Torna ai set</a>
+            <a class="btn btn--accent" href="#" data-ig target="_blank" rel="noopener">Scrivimi · @locamimi.dmg</a>
+            <a class="btn btn--page" data-email href="#">Email</a>
+            <a class="btn btn--page" href="#set">Torna ai set</a>
           </div>
         </div>
         <img class="contatti__art" data-reveal src="assets/svg/coppa.svg" width="300" height="298" alt="" loading="lazy">
       </div>
-      <p class="foot">© <span data-year>2026</span> locamimi</p>
+      <p class="foot">LOCAMIMI · DJ · Milano · Bari · good music always finds good people</p>
     </section>
   </main>
 

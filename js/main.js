@@ -26,8 +26,8 @@
   const now = $('[data-now]');
 
   /* ——— markup dischi ——— */
-  const discHTML = (s, extra = '') =>
-    `<div class="disc__label"><img src="${s.fox}" alt="" draggable="false"></div>`;
+  const discHTML = (s) =>
+    `<div class="disc__label"><img class="disc__art" src="${s.art}" alt="" draggable="false"></div>`;
 
   const discs = SETS.map((s, i) => {
     const b = document.createElement('button');
@@ -229,16 +229,24 @@
   if (CONFIG.unsplashAccessKey) {
     const ctl = new AbortController();
     const to = setTimeout(() => ctl.abort(), 2500);
-    fetch(`https://api.unsplash.com/photos/random?count=${N}&orientation=landscape&content_filter=high&query=${encodeURIComponent(CONFIG.unsplashQuery || 'pink')}`,
+    fetch(`https://api.unsplash.com/photos/random?count=${N}&orientation=squarish&content_filter=high&query=${encodeURIComponent(CONFIG.unsplashQuery || 'pink')}`,
       { signal: ctl.signal, headers: { 'Accept-Version': 'v1', Authorization: `Client-ID ${CONFIG.unsplashAccessKey}` } })
       .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then((photos) => {
         if (!Array.isArray(photos) || !photos.length) return;
-        cards.forEach((c, i) => {
-          const p = photos[i % photos.length];
-          const box = c.querySelector('.scheda__img');
-          box.classList.add('has-photo');
-          box.innerHTML = `<img class="scheda__photo" src="${p.urls.raw}&w=960&h=720&fit=crop&auto=format&q=75" alt="${(p.alt_description || '').replace(/"/g, '&quot;')}" loading="lazy" draggable="false">`;
+        photos.forEach((p, i) => {
+          if (i >= N) return;
+          const url = `${p.urls.raw}&w=1400&h=1400&fit=crop&auto=format&q=75`;   // quadrata: label del disco + card (cover)
+          const alt = (p.alt_description || '').replace(/"/g, '&quot;');
+          const pre = new Image();
+          pre.onload = () => {                                                   // si cambia solo a immagine pronta
+            discs[i].querySelector('.disc__label').innerHTML = `<img class="disc__photo" src="${url}" alt="" draggable="false">`;
+            discs[i].classList.add('has-photo');
+            const box = cards[i].querySelector('.scheda__img');
+            box.classList.add('has-photo');
+            box.innerHTML = `<img class="scheda__photo" src="${url}" alt="${alt}" draggable="false">`;
+          };
+          pre.src = url;
         });
         const el = $('[data-credits]');
         const seen = new Set(), names = [];

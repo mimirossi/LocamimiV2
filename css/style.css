@@ -147,6 +147,7 @@ a { color: inherit; }
 }
 .disc__label::before { content: ""; position: absolute; inset: 0; }
 .disc__label img { position: relative; width: 86%; height: 86%; object-fit: contain; transform: scale(1, var(--fy, 1)); }
+.disc__label img.disc__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: none; }
 .disc__label::after {   /* foro centrale */
   content: ""; position: absolute; left: 50%; top: 50%; width: 3.2%; aspect-ratio: 1;
   transform: translate(-50%, -50%); border-radius: 50%; background: var(--surface-page);
@@ -154,6 +155,7 @@ a { color: inherit; }
 }
 .disc--lime .disc__label { background: var(--surface-accent-default); }
 .disc--pink .disc__label { background: var(--surface-primary-default); }
+.disc--grey .disc__label { background: var(--surface-page-secondary); }
 .disc--marble .disc__label { background: var(--surface-primary-default); }
 .disc--marble .disc__label::before {   /* marmorizzato: approssimazione CSS+SVG del JPEG originale */
   background:

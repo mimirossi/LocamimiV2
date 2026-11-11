@@ -1,9 +1,9 @@
 /* Contenuti dei set e link: modifica solo qui.
    Copiati dal carosello di https://mimirossi.github.io/locamimiv1/ (js/sets.js del v1).
-   - label: colore della label del disco ("lime" | "pink" | "marble"), fox: illustrazione sulla label
-   - art: illustrazione della card (cuore / coppa) e bg: colore dello sfondo card (come "tone" nel v1)
-   - Foto Unsplash: come nel v1, se unsplashAccessKey e' valorizzata le card mostrano foto casuali con i crediti;
-     altrimenti (o se la richiesta fallisce) restano le illustrazioni. */
+   - bg / label: colore di sfondo (come "tone" nel v1), uguale su disco e card
+   - art: illustrazione (cuore / coppa), usata su disco e card solo quando le foto non ci sono
+   - Foto Unsplash: la foto i-esima va sulla label del disco i-esimo E nella card i-esima (stessa foto).
+     Se non arrivano, disco e card restano entrambi con l'illustrazione. */
 window.LOCAMIMI_LINKS = {
   instagram: "https://www.instagram.com/locamimi.dmg/",
   soundcloud: "https://on.soundcloud.com/WPTMlYil9nq6BLrn5F",
@@ -22,8 +22,7 @@ window.LOCAMIMI_SETS = [
     title: "Italo Disco Summer",
     subtitle: "Italo disco · 10 min",
     description: "Per chi ha ancora l’estate addosso: italo disco, synth luccicanti e cassa dritta.",
-    label: "lime",
-    fox: "assets/svg/volpe-soul-thing.svg",
+    label: "pink",
     art: "assets/svg/cuore-set.svg",
     bg: "pink",
     cta: "Ascolta",
@@ -34,8 +33,7 @@ window.LOCAMIMI_SETS = [
     title: "Back to the Club",
     subtitle: "House · 20 min",
     description: "Quando il giovedì non basta più: house tonda, tanto bounce e groove fino all’ultimo pezzo.",
-    label: "pink",
-    fox: "assets/svg/volpe-groove.svg",
+    label: "lime",
     art: "assets/svg/coppa-set.svg",
     bg: "lime",
     cta: "Ascolta",
@@ -46,8 +44,7 @@ window.LOCAMIMI_SETS = [
     title: "Ballo Ballo — Carrà x Hardgroove",
     subtitle: "Hardgroove · 3 min",
     description: "La Carrà incontra l’hardgroove: italianità da balera e cassa dura, per ballare ballare.",
-    label: "marble",
-    fox: "assets/svg/volpe-juicy-thursday.svg",
+    label: "grey",
     art: "assets/svg/cuore-set.svg",
     bg: "grey",
     cta: "Ascolta",
@@ -58,8 +55,7 @@ window.LOCAMIMI_SETS = [
     title: "Latin Core 25.04",
     subtitle: "Latin house · 45 min",
     description: "Il cuore latino del mio suono: percussioni calde, bassi tondi e un poquito di sudore.",
-    label: "lime",
-    fox: "assets/svg/volpe-soul-thing.svg",
+    label: "pink",
     art: "assets/svg/coppa-set.svg",
     bg: "pink",
     cta: "Ascolta",
@@ -70,8 +66,7 @@ window.LOCAMIMI_SETS = [
     title: "Chilly Morning 09.04",
     subtitle: "House · 30 min",
     description: "Per le mattine dopo: house morbida, groove lento e caffè ancora caldo.",
-    label: "pink",
-    fox: "assets/svg/volpe-groove.svg",
+    label: "lime",
     art: "assets/svg/cuore-set.svg",
     bg: "lime",
     cta: "Ascolta",
@@ -82,8 +77,7 @@ window.LOCAMIMI_SETS = [
     title: "Berlin Hot 22.03.2025",
     subtitle: "Hardgroove · 30 min",
     description: "Un pezzo di Berlino portato a casa: groove techno, hardgroove e zero pause.",
-    label: "marble",
-    fox: "assets/svg/volpe-juicy-thursday.svg",
+    label: "grey",
     art: "assets/svg/coppa-set.svg",
     bg: "grey",
     cta: "Ascolta",

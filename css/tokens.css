@@ -1,0 +1,101 @@
+/* Locamimi · design tokens
+   Fonte: variabili del file Figma "Design System_Loca" (nomi = code syntax Figma).
+   I valori mobile sono quelli dei frame mobile (390px). */
+
+@font-face {
+  font-family: "DAMN";
+  src: url("../assets/fonts/damn.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  /* colore */
+  --surface-page: #fffdf7;
+  --surface-page-secondary: #eeeeee;
+  --surface-accent-default: #ceff32;   /* locamimi/Verde */
+  --surface-primary-default: #fd4ad0;
+  --text-default-heading: #1c1c1c;
+  --text-default-body: #1c1c1c;
+  --text-default-caption: #4a4a4a;
+  --text-on-colour-heading: #1c1c1c;
+  --text-on-colour-body: #1c1c1c;
+  --border-default-on-colour: #1c1c1c;
+  --color-graphite: #4c4b4b;
+
+  /* tipografia */
+  --font-family-text: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-family-display: "DAMN", "Bricolage Grotesque", Impact, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --font-display-font-size: 90px;
+  --font-display-line-height: 100px;
+  --font-display-letter-spacing: -2px;
+  --font-heading-h4-font-size: 28px;
+  --font-heading-h4-line-height: 36px;
+  --font-heading-h4-letter-spacing: 0px;
+  --font-body-default-font-size: 16px;
+  --font-body-default-line-height: 24px;
+  --font-body-default-letter-spacing: 0px;
+  --font-caption-font-size: 12px;
+  --font-caption-line-height: 20px;
+  --font-caption-letter-spacing: 0px;
+  --font-ui-button-font-size: 16px;
+  --font-ui-button-line-height: 20px;
+  --font-ui-button-letter-spacing: 0px;
+  --font-ui-tag-font-size: 12px;
+  --font-ui-tag-line-height: 16px;
+  --font-ui-tag-letter-spacing: 0.5px;
+
+  /* spaziatura */
+  --spacing-button-inset-horizontal: 16px;
+  --spacing-button-inset-vertical: 12px;
+  --spacing-button-icon-label: 8px;
+  --spacing-navigation-item-gap: 16px;
+  --spacing-inline-lg: 16px;
+  --spacing-stack-xs: 4px;
+  --spacing-stack-sm: 8px;
+  --spacing-stack-md: 16px;
+  --spacing-stack-lg: 24px;
+  --spacing-stack-2xl: 48px;
+  --spacing-section-lg: 64px;
+  --spacing-section-xl: 96px;
+  --grid-margin: 64px;
+
+  /* forma + elevazione */
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 999px;
+  --elevation-lg-offset-x: 0px;
+  --elevation-lg-offset-y: 8px;
+  --elevation-lg-blur: 16px;
+  --elevation-lg-spread: 0px;
+  --elevation-lg-color: #00000029;
+  --shadow-lg: var(--elevation-lg-offset-x) var(--elevation-lg-offset-y) var(--elevation-lg-blur) var(--elevation-lg-spread) var(--elevation-lg-color);
+}
+
+/* tablet / laptop stretti: display fluido, così i titoli non escono dalla colonna */
+@media (max-width: 1100px) {
+  :root {
+    --font-display-font-size: clamp(56px, 7.2vw, 90px);
+    --font-display-line-height: 1.11em;
+  }
+}
+
+/* mobile (frame 390) */
+@media (max-width: 760px) {
+  :root {
+    --font-display-font-size: 61px;
+    --font-display-line-height: 68px;
+    --font-display-letter-spacing: -1px;
+    --font-heading-h4-font-size: 25px;
+    --font-heading-h4-line-height: 32px;
+    --spacing-stack-lg: 20px;
+    --spacing-stack-2xl: 36px;
+    --spacing-section-lg: 48px;
+    --spacing-section-xl: 72px;
+    --grid-margin: 20px;
+  }
+}

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>locamimi · dj set house / hardgroove con latin vibes</title>
+  <meta name="description" content="locamimi: dj set house e hardgroove con latin vibes. Scopri i set su SoundCloud e il giovedì Juicy Thursday.">
+  <meta name="theme-color" content="#fffdf7">
+  <link rel="icon" href="assets/svg/volpe-groove.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/damn.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#set">Vai ai set</a>
+
+  <!-- filtro per la texture marmorizzata del disco rosa -->
+  <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    <filter id="marble" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="90" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <header class="nav" id="top">
+    <a class="nav__brand" href="#top" aria-label="locamimi, torna in alto">
+      <img src="assets/svg/wordmark.svg" width="150" height="43" alt="LOCAMIMI">
+    </a>
+    <nav class="nav__links" aria-label="Principale">
+      <a href="#set">Set</a>
+      <a href="#giovedi">Giovedì</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO + ZOOM -->
+    <section class="hero" id="set" data-hero aria-labelledby="hero-title">
+      <div class="hero__stage" data-stage>
+        <div class="hero__copy" data-hero-copy>
+          <p class="tag">DJ · house / hardgroove</p>
+          <h1 class="display" id="hero-title">Locamimi</h1>
+          <p class="hero__lead">Latin vibes sopra ogni cassa dritta. Scorri i dischi, scegli un set.</p>
+        </div>
+
+        <div class="zoomer" data-zoomer>
+          <div class="carousel" data-carousel role="group" aria-roledescription="carosello" aria-label="Set di locamimi" tabindex="0"></div>
+        </div>
+
+        <div class="hero__controls" data-controls>
+          <button class="ctl" type="button" data-prev aria-label="Set precedente">←</button>
+          <p class="hero__now" data-now aria-live="polite"></p>
+          <button class="ctl" type="button" data-next aria-label="Set successivo">→</button>
+        </div>
+
+        <p class="hero__hint" data-hint>Trascina · clicca un disco · poi scorri giù</p>
+        <div class="hero__wash" data-wash aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- JUICY THURSDAY -->
+    <section class="giovedi" id="giovedi" aria-labelledby="giovedi-title">
+      <img class="deco deco--linea-a" src="assets/svg/linea-curva-a.svg" alt="" width="295" height="116">
+      <img class="deco deco--linea-b" src="assets/svg/linea-curva-b.svg" alt="" width="174" height="53">
+      <img class="deco deco--linea-c" src="assets/svg/linea-curva-c.svg" alt="" width="295" height="31">
+
+      <div class="giovedi__inner">
+        <div class="giovedi__text" data-reveal>
+          <p class="tag">Ogni giovedì</p>
+          <h2 class="display" id="giovedi-title">Juicy<br>Thursday</h2>
+          <p class="body">I miei dj set del giovedì: house, hardgroove e una spruzzata di latin per arrivare al weekend con qualche ora d’anticipo.</p>
+          <a class="btn btn--dark" href="#" data-sc="juicy" target="_blank" rel="noopener">Ascolta su SoundCloud</a>
+        </div>
+
+        <div class="giovedi__art" data-reveal aria-hidden="true">
+          <div class="disc disc--static disc--marble">
+            <div class="disc__label"><img src="assets/svg/volpe-juicy-thursday.svg" alt=""></div>
+          </div>
+          <span class="sticker sticker--cuore"><img src="assets/svg/sticker-cuore.svg" alt=""><b>♥ giovedì</b></span>
+          <span class="sticker sticker--cuffie"><img src="assets/svg/sticker-cuffie.svg" alt=""><b>dal vivo</b></span>
+          <img class="sparkle sparkle--a" src="assets/svg/pixel-sparkle.svg" alt="" width="16" height="16">
+          <img class="sparkle sparkle--b" src="assets/svg/pixel-sparkle.svg" alt="" width="16" height="16">
+          <img class="sparkle sparkle--c" src="assets/svg/stella-guancia.svg" alt="" width="17" height="16">
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATTI -->
+    <section class="contatti" id="contatti" aria-labelledby="contatti-title">
+      <div class="contatti__inner">
+        <div class="contatti__text" data-reveal>
+          <p class="tag">Scrivimi</p>
+          <h2 class="display" id="contatti-title">Contatti</h2>
+          <p class="body">Date, serate, collaborazioni o solo un saluto: il modo più veloce è un messaggio su Instagram.</p>
+          <div class="contatti__cta">
+            <a class="btn btn--dark" href="#" data-ig target="_blank" rel="noopener">Scrivimi su Instagram</a>
+            <a class="btn btn--ghost" href="#set">Torna ai set</a>
+          </div>
+        </div>
+        <img class="contatti__art" data-reveal src="assets/svg/coppa.svg" width="300" height="298" alt="" loading="lazy">
+      </div>
+      <p class="foot">© <span data-year>2026</span> locamimi</p>
+    </section>
+  </main>
+
+  <!-- CARD DEI SET -->
+  <div class="sheet" data-sheet hidden>
+    <div class="sheet__backdrop" data-close></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-label="Dettaglio set" data-panel>
+      <button class="sheet__close" type="button" data-close aria-label="Chiudi">✕</button>
+      <div class="sheet__track" data-track tabindex="0" aria-label="Schede dei set, scorri in orizzontale"></div>
+      <p class="sheet__hint">Scorri di lato per gli altri set</p>
+    </div>
+  </div>
+
+  <script src="js/sets.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

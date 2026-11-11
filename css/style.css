@@ -152,6 +152,11 @@ a { color: inherit; }
   background: var(--surface-accent-default);
   box-shadow: inset 0 0 0 1.5px #1c1c1c33;
 }
+.disc__label { animation: disc-spin 2.4s linear infinite paused; }   /* ferma finché non c'è hover: resta all'angolo raggiunto */
+.disc.is-arriving .disc__label { animation: disc-arrive 1.5s cubic-bezier(.22,.7,.2,1) 1 running; }
+@media (hover: hover) { .disc:hover .disc__label { animation-play-state: running; } }
+@keyframes disc-spin { to { transform: rotate(360deg); } }
+@keyframes disc-arrive { from { transform: rotate(-360deg); } to { transform: rotate(0deg); } }
 .disc__label::before { content: ""; position: absolute; inset: 0; }
 .disc__label img { position: relative; width: 86%; height: 86%; object-fit: contain; transform: scale(1, var(--fy, 1)); }
 .disc__label img.disc__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: none; }
@@ -288,6 +293,7 @@ a { color: inherit; }
 
 /* ——— movimento ridotto ——— */
 @media (prefers-reduced-motion: reduce) {
+  .disc__label, .disc.is-arriving .disc__label { animation: none; }
   html { scroll-behavior: auto; }
   .hero { height: auto; }
   .hero__stage { position: relative; height: 100svh; min-height: 620px; }

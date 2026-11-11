@@ -53,8 +53,17 @@
     step = dia * spacingFor();
   }
 
+  /* ——— intro: i dischi entrano da sinistra a destra, poi girano in senso orario ——— */
+  const INTRO_DUR = 950, INTRO_GAP = 170;
+  let introDone = reduce.matches, introT0 = 0;
+  const introDelay = discs.map((_, i) => (wrap(i - 0) + N / 2) * INTRO_GAP);   // ordine = posizione da sinistra a destra
+  const arrived = discs.map(() => false);
+  const maxDelay = Math.max(...introDelay);
+
   function render() {
     const center = mod(Math.round(pos), N);
+    const t = introDone ? Infinity : performance.now() - introT0;
+    if (!introDone && t > maxDelay + INTRO_DUR) introDone = true;
     const others = 1 - clamp(zoomP * 2.6);
     discs.forEach((el, i) => {
       const d = wrap(i - pos);
@@ -62,9 +71,20 @@
       const edge = clamp((N / 2 - a) / 0.5);        // wrap infinito: scala→0 e dissolvenza ai bordi
       const sx = Math.max(0, (1 - SX * a)) * edge;
       const sy = Math.max(0, (1 - SY * a)) * edge;
-      el.style.transform = `translate3d(${(d * step).toFixed(1)}px,0,0) scale(${sx.toFixed(4)},${sy.toFixed(4)})`;
+      let p = 1;
+      if (!introDone) p = clamp((t - introDelay[i]) / INTRO_DUR);
+      const ep = 1 - Math.pow(1 - p, 3);
+      const enterX = (1 - ep) * -(window.innerWidth * 0.55 + dia);
+      if (p >= 1 && !arrived[i]) {
+        arrived[i] = true;
+        if (!reduce.matches && edge > 0.5) {
+          el.classList.add('is-arriving');
+          el.addEventListener('animationend', () => el.classList.remove('is-arriving'), { once: true });
+        }
+      }
+      el.style.transform = `translate3d(${(d * step + enterX).toFixed(1)}px,0,0) scale(${sx.toFixed(4)},${sy.toFixed(4)})`;
       el.style.setProperty('--fy', sy > 0.001 ? (sx / sy).toFixed(4) : 1);   // la volpe resta tonda
-      el.style.opacity = (i === center ? 1 : others * edge).toFixed(3);
+      el.style.opacity = ((i === center ? 1 : others * edge) * clamp(p * 3)).toFixed(3);
       el.style.zIndex = 100 - Math.round(a * 10);
       el.classList.toggle('is-center', i === center);
       el.tabIndex = zoomP > 0.05 ? -1 : 0;
@@ -78,7 +98,7 @@
   function loop() {
     if (!dragging) {
       const dlt = target - pos;
-      if (reduce.matches || Math.abs(dlt) < 0.001) { pos = target; render(); raf = 0; return; }
+      if (reduce.matches || Math.abs(dlt) < 0.001) { pos = target; render(); raf = introDone ? 0 : requestAnimationFrame(loop); return; }
       pos += dlt * 0.14;
     }
     render();
@@ -278,6 +298,8 @@
   document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 
   /* ——— avvio ——— */
-  measure(); onScroll(); render();
+  measure(); onScroll();
+  if (!introDone) { introT0 = performance.now(); kick(); }
+  render();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { measure(); render(); });
 })();

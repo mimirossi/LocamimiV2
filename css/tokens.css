@@ -21,6 +21,29 @@
   --text-on-colour-heading: #1c1c1c;
   --text-on-colour-body: #1c1c1c;
   --border-default-on-colour: #1c1c1c;
+
+  /* ——— Button DS (Mapped/Light) ——— */
+  --surface-primary-default-hover: #fd7fd7;
+  --surface-primary-default-subtle: #fee7f5;
+  --text-primary-default: #970f7a;
+  --text-primary-default-on-colour: #1c1c1c;
+  --border-primary-focus: #ce1ea7;
+  --surface-secondary-default: #f3c3e6;
+  --surface-secondary-default-hover: #f5ccea;
+  --text-secondary-default-on-colour: #1c1c1c;
+  --border-secondary-focus: #87637d;
+  --surface-accent-default-hover: #d3fe64;
+  --surface-accent-default-subtle: #e8f6ce;
+  --surface-accent-default-subtle-hover: #e1f9b0;
+  --text-accent-default: #3e4f03;
+  --text-accent-default-on-colour: #1c1c1c;
+  --border-accent-focus: #6a8512;
+  --surface-error-default: #d92d20;
+  --surface-error-default-hover: #b2160c;
+  --text-error-default-on-colour: #ffffff;
+  --surface-disabled-default: #b4b4b4;
+  --text-disabled-default: #1c1c1c;
+  --border-default-default: #7d7d7d;
   --color-graphite: #4c4b4b;
 
   /* tipografia */

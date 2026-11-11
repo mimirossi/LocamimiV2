@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/fonts/damn.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="css/tokens.css?v=202611111241">
-  <link rel="stylesheet" href="css/style.css?v=202611111241">
+  <link rel="stylesheet" href="css/tokens.css?v=202611111457">
+  <link rel="stylesheet" href="css/style.css?v=202611111457">
 </head>
 <body>
   <a class="skip" href="#set">Vai ai set</a>
@@ -29,7 +29,7 @@
     <a class="nav__brand" href="#top" aria-label="locamimi, torna in alto">
       <img src="assets/svg/wordmark.svg" width="150" height="43" alt="LOCAMIMI">
     </a>
-    <a class="btn btn--page nav__cta" href="#contatti">Booking</a>
+    <a class="btn btn--secondary nav__cta" href="#contatti">Booking</a>
   </header>
 
   <main>
@@ -47,9 +47,9 @@
         </div>
 
         <div class="hero__controls" data-controls>
-          <button class="ctl" type="button" data-prev aria-label="Set precedente">←</button>
+          <button class="btn btn--secondary btn--icon" type="button" data-prev aria-label="Set precedente">←</button>
           <p class="hero__now" data-now aria-live="polite"></p>
-          <button class="ctl" type="button" data-next aria-label="Set successivo">→</button>
+          <button class="btn btn--secondary btn--icon" type="button" data-next aria-label="Set successivo">→</button>
         </div>
 
         <p class="hero__hint" data-hint>Trascina in orizzontale. Tocca un disco per scoprire il set.</p>
@@ -72,7 +72,7 @@
             <div><dt>Dove</dt><dd><a data-maps href="#" target="_blank" rel="noopener">Hey Luigi · Via G. Washington 107, Milano</a></dd></div>
             <div><dt>Orario</dt><dd>19:00 – 22:00</dd></div>
           </dl>
-          <a class="btn btn--page" href="#" data-ig target="_blank" rel="noopener">Parliamone su Instagram</a>
+          <a class="btn btn--neutral" href="#" data-ig target="_blank" rel="noopener">Parliamone su Instagram</a>
         </div>
 
         <div class="giovedi__art" data-reveal aria-hidden="true">
@@ -97,8 +97,8 @@
           <p class="body">Ci vediamo alla tua serata? Scrivimi dove preferisci.</p>
           <div class="contatti__cta">
             <a class="btn btn--accent" href="#" data-ig target="_blank" rel="noopener">Scrivimi · @locamimi.dmg</a>
-            <a class="btn btn--page" data-email href="#">Email</a>
-            <a class="btn btn--page" href="#set">Torna ai set</a>
+            <a class="btn btn--neutral" data-email href="#">Email</a>
+            <a class="btn btn--neutral" href="#set">Torna ai set</a>
           </div>
         </div>
         <img class="contatti__art" data-reveal src="assets/svg/coppa.svg" width="300" height="298" alt="" loading="lazy">
@@ -112,13 +112,13 @@
   <div class="sheet" data-sheet hidden>
     <div class="sheet__backdrop" data-close></div>
     <div class="sheet__panel" role="dialog" aria-modal="true" aria-label="Dettaglio set" data-panel>
-      <button class="sheet__close" type="button" data-close aria-label="Chiudi">✕</button>
+      <button class="btn btn--neutral btn--icon sheet__close" type="button" data-close aria-label="Chiudi">✕</button>
       <div class="sheet__track" data-track tabindex="0" aria-label="Schede dei set, scorri in orizzontale"></div>
       <p class="sheet__hint">Scorri di lato per gli altri set</p>
     </div>
   </div>
 
-  <script src="js/sets.js?v=202611111241"></script>
-  <script src="js/main.js?v=202611111241"></script>
+  <script src="js/sets.js?v=202611111457"></script>
+  <script src="js/main.js?v=202611111457"></script>
 </body>
 </html>

@@ -154,6 +154,7 @@ a { color: inherit; }
   box-shadow: 0 0 0 1px #1c1c1c55;
 }
 .disc--lime .disc__label { background: var(--surface-accent-default); }
+.disc__label { transition: background-color .3s; }
 .disc--pink .disc__label { background: var(--surface-primary-default); }
 .disc--grey .disc__label { background: var(--surface-page-secondary); }
 .disc--marble .disc__label { background: var(--surface-primary-default); }

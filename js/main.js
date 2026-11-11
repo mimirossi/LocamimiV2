@@ -26,8 +26,10 @@
   const now = $('[data-now]');
 
   /* ——— markup dischi ——— */
-  const discHTML = (s) =>
-    `<div class="disc__label"><img class="disc__art" src="${s.art}" alt="" draggable="false"></div>`;
+  const CONFIG = window.LOCAMIMI_CONFIG || {};
+  const WANT_PHOTOS = !!CONFIG.unsplashAccessKey;       // con le foto attive, niente illustrazione mentre arrivano
+  const artImg = (s) => `<img class="disc__art" src="${s.art}" alt="" draggable="false">`;
+  const discHTML = (s) => `<div class="disc__label">${WANT_PHOTOS ? '' : artImg(s)}</div>`;
 
   const discs = SETS.map((s, i) => {
     const b = document.createElement('button');
@@ -174,7 +176,7 @@
   track.innerHTML = SETS.map((s) => `
     <article class="scheda" aria-label="${s.title}">
       <div class="scheda__img scheda__img--${s.bg}">
-        <img class="scheda__art" src="${s.art}" alt="" draggable="false">
+        ${WANT_PHOTOS ? '' : `<img class="scheda__art" src="${s.art}" alt="" draggable="false">`}
       </div>
       <div class="scheda__body">
         <p class="tag">${s.subtitle}</p>
@@ -224,16 +226,22 @@
   }, { passive: false });
 
   /* ——— foto Unsplash (come nel v1): se arrivano entro 2,5 s sostituiscono le illustrazioni ——— */
-  const CONFIG = window.LOCAMIMI_CONFIG || {};
   const utm = (u) => u + (u.includes('?') ? '&' : '?') + 'utm_source=locamimi&utm_medium=referral';
-  if (CONFIG.unsplashAccessKey) {
+  const useArt = (i) => {            // ripiego: stessa illustrazione su disco e card
+    if (discs[i].classList.contains('has-photo')) return;
+    discs[i].querySelector('.disc__label').innerHTML = artImg(SETS[i]);
+    const box = cards[i].querySelector('.scheda__img');
+    if (!box.classList.contains('has-photo')) box.innerHTML = `<img class="scheda__art" src="${SETS[i].art}" alt="" draggable="false">`;
+  };
+  if (WANT_PHOTOS) {
     const ctl = new AbortController();
-    const to = setTimeout(() => ctl.abort(), 2500);
+    const to = setTimeout(() => ctl.abort(), 4000);
     fetch(`https://api.unsplash.com/photos/random?count=${N}&orientation=squarish&content_filter=high&query=${encodeURIComponent(CONFIG.unsplashQuery || 'pink')}`,
       { signal: ctl.signal, headers: { 'Accept-Version': 'v1', Authorization: `Client-ID ${CONFIG.unsplashAccessKey}` } })
       .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then((photos) => {
-        if (!Array.isArray(photos) || !photos.length) return;
+        if (!Array.isArray(photos) || !photos.length) { SETS.forEach((_, i) => useArt(i)); return; }
+        for (let i = photos.length; i < N; i++) useArt(i);
         photos.forEach((p, i) => {
           if (i >= N) return;
           const url = `${p.urls.raw}&w=1400&h=1400&fit=crop&auto=format&q=75`;   // quadrata: label del disco + card (cover)
@@ -246,6 +254,7 @@
             box.classList.add('has-photo');
             box.innerHTML = `<img class="scheda__photo" src="${url}" alt="${alt}" draggable="false">`;
           };
+          pre.onerror = () => useArt(i);
           pre.src = url;
         });
         const el = $('[data-credits]');
@@ -254,7 +263,7 @@
         el.innerHTML = `Foto di ${names.join(', ')} su <a href="${utm('https://unsplash.com/')}" target="_blank" rel="noopener">Unsplash</a>`;
         el.hidden = false;
       })
-      .catch(() => {})
+      .catch(() => SETS.forEach((_, i) => useArt(i)))
       .finally(() => clearTimeout(to));
   }
 
